@@ -17,15 +17,44 @@ public class Main {
 
         System.out.println("give name right now");
         String getUsersName = scanner.nextLine();
+        String reversedCap = "";
+        String reversed = "";
+        String camelCase = "";
+        String ascii = "";
+        boolean capYes = true;
         for (String i : getUsersName.split("")) {
             char letterToChar = i.charAt(0);
             int charToInt = (int)letterToChar;
+            int charToInt2 = charToInt;
+
+            ascii = ascii + charToInt;
+
+            if (capYes) {
+                if (charToInt2 < 123 && charToInt2 > 96) {
+                    charToInt2 -= 32;
+                }
+
+            } else {
+                if (charToInt2 < 91 && charToInt2 > 64) {
+                    charToInt2 += 32;
+                }
+            }
+            capYes = !capYes;
+
             if (charToInt < 123 && charToInt > 96) {
                 charToInt -= 32;
             }
-            char nameCapital = (char)charToInt;
 
-            System.out.print(nameCapital);
+            char nameCapital = (char)charToInt;
+            char nameCamel = (char)charToInt2;
+
+            reversedCap = nameCapital + reversedCap;
+            reversed = i + reversed;
+            camelCase = camelCase + nameCamel;
         }
+        System.out.println("Name reversed: " + reversed);
+        System.out.println("Name capital reversed: " + reversedCap);
+        System.out.println("Name camel case: " + camelCase);
+        System.out.println("ASCII " + ascii);
     }
 }
