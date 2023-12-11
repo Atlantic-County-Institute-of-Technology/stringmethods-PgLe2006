@@ -15,20 +15,20 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("give name right now");
         String getUsersName = scanner.nextLine();
-        // 
+        // Variables used to hold the different verisions of the user's name
         String reversedCap = "";
         String reversed = "";
         String camelCase = "";
         String ascii = "";
         boolean capYes = true;
-
+        // Goes through each letter in the name then converts the string to char then an int 
         for (String i : getUsersName.split("")) {
             char letterToChar = i.charAt(0);
             int charToInt = (int)letterToChar;
             int charToInt2 = charToInt;
 
             ascii = ascii + charToInt;
-
+            // Checks if the last letter was capital the converts it lowercase if it was
             if (capYes) {
                 if (charToInt2 < 123 && charToInt2 > 96) {
                     charToInt2 -= 32;
@@ -38,19 +38,21 @@ public class Main {
                     charToInt2 += 32;
                 }
             }
+            // Switches between true and false so it skips over a letter
             capYes = !capYes;
-
+            // Checks if the letter is capital then makes it lowercase
             if (charToInt < 123 && charToInt > 96) {
                 charToInt -= 32;
             }
-
+            // Turns the integers back into characters 
             char nameCapital = (char)charToInt;
             char nameCamel = (char)charToInt2;
-
+            // Adds the letter onto the variable 
             reversedCap = nameCapital + reversedCap;
             reversed = i + reversed;
             camelCase = camelCase + nameCamel;
         }
+        //Prints out all the variants of the user's name
         System.out.println("Name reversed: " + reversed);
         System.out.println("Name capital reversed: " + reversedCap);
         System.out.println("Name camel case: " + camelCase);
